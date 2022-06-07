@@ -88,8 +88,7 @@
                             return this.modelValue
                         },
                         set(value) {
-                            console.log(value)
-                            this.$emit()
+                            this.$emit('update:modelValue', value)
                         }
                     }
                 }
