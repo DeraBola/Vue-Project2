@@ -50,25 +50,36 @@
             template: `
             <form @submit.prevent="handleSubmit">
                 <h1>{{title}}</h1>
-             <input type="email" />
-             <input type="password" />
+             <custom-input type="email" v-model="email"/>
+             <custom-input type="password" v-model="password"/>
              <br>
              <button>Login</button>
               </form>
              `,
+            components: ['custom-input'],
             data() {
                 return {
-                    title: 'Login-Form'
+                    title: 'Login-Form',
+                    email: '',
+                    password: ''
                 }
             },
             methods: {
                 handleSubmit() {
-                    console.log('submitted')
+                    console.log(this.email, this.password)
                 }
             }
 
         })
-        app.mount('#app')
+        app.component('custom-input', {
+                template: `
+                    <label>
+                        {{label}}
+                        <input type="text">
+                        </label>
+                    `
+            })
+            .mount('#app')
     </script>
 </body>
 
