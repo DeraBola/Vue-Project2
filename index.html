@@ -13,14 +13,6 @@
             width: 200px;
         }
         
-        .box.two {
-            background-color: red;
-        }
-        
-        .box.three {
-            background-color: blue;
-        }
-        
         [v-cloak] {
             display: none;
         }
@@ -29,10 +21,9 @@
 
 <body>
     <div id="app" v-cloak>
-        {{greeting}}
-        <input v-model="greeting" />
+        <login-form/>
         <hr/>
-        <button>Show Box</button>
+        <button @click="toggleBox">Toggle Box</button>
         <div v-if="isVisible" class="box"></div>
     </div>
     <script src=" https://unpkg.com/vue@3 "></script>
@@ -44,7 +35,30 @@
                     isVisible: false,
 
                 }
+            },
+
+            methods: {
+                toggleBox() {
+                    this.isVisible = !this.isVisible
+                },
+                greet(greeting) {
+                    console.log(greeting)
+                }
             }
+        })
+        app.component('login-form', {
+            template: `
+             <div>
+             <input type="email"/>
+             <input type="password"/>
+              </div>
+             `,
+            data() {
+                return {
+                    title: 'Login-form'
+                }
+            }
+
         })
         app.mount('#app')
     </script>
