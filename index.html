@@ -33,7 +33,6 @@
                 return {
                     greeting: 'Hello Vue 3!',
                     isVisible: false,
-
                 }
             },
 
@@ -53,7 +52,7 @@
              <custom-input
              v-for="(input, i) in inputs"
              :key="i"
-              v-model="input.vale"
+              v-model="input.value"
                :label="input.label"
                :type="input.type"
                />
